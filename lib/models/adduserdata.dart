@@ -10,7 +10,8 @@ CollectionReference _userdetails =FirebaseFirestore.instance.collection('UserDet
       'Weight':weight,
       'Height':height,
       'WorkingTime':time,
-      'GoalWeight':goal
+      'GoalWeight':goal,
+      'BMIvalue':'',
 
     });
   }

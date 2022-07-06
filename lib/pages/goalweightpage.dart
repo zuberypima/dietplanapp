@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:smartdietapp/models/adduserdata.dart';
+import 'package:smartdietapp/models/bmicalculator.dart';
 import 'package:smartdietapp/pages/screens/homescreen.dart';
 import 'package:smartdietapp/widgets/nextbutton.dart';
 
@@ -66,6 +67,7 @@ class GoalWeightPage extends StatelessWidget {
                 // final value = goalweight;
                 //  await Hive.box('goalweight').put(key, value);
                 //  await _goalweightbox.put(key, value).toString();
+                BIM().bmicalculator(weight,height);
                 await AddUserData().userDetails(name, age, weight,
                     height.toString(), workingtime, goalweight.toString());
                 Navigator.push(context,

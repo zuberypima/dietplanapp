@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:smartdietapp/pages/homepage.dart';
 import 'package:smartdietapp/pages/registrationpage.dart';
 import 'package:smartdietapp/pages/screens/homescreen.dart';
+import 'package:smartdietapp/pages/usedetailspage.dart';
 import 'package:smartdietapp/widgets/nextbutton.dart';
 
 
@@ -12,6 +13,7 @@ class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
   String? _email;
   String? _password;
+
   final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -109,7 +111,7 @@ class LoginPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => HomeScren()));
+                        builder: (context) => UserDetailsPage()));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
