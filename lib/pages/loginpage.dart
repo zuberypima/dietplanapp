@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:smartdietapp/pages/homepage.dart';
 import 'package:smartdietapp/pages/registrationpage.dart';
 import 'package:smartdietapp/pages/screens/homescreen.dart';
 import 'package:smartdietapp/widgets/nextbutton.dart';
@@ -11,22 +12,6 @@ class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
   String? _email;
   String? _password;
- // List<Box> boxList = [];
-  // Future<List<Box>> _openBox() async {
-  //   var dir = await getApplicationDocumentsDirectory();
-  //   Hive.init(dir.path);
-  //   var box_name = await Hive.openBox('username');
-  //   var box_age = await Hive.openBox("usedage");
-  //   var box_weight = await Hive.openBox("userweight");
-  //   var box_height = await Hive.openBox("userheight");
-
-  //   boxList.add(box_name);
-  //   boxList.add(box_age);
-  //   boxList.add(box_weight);
-  //   boxList.add(box_height);
-  //   return boxList;
-  // }
-
   final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -124,7 +109,7 @@ class LoginPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => RegistrationPage()));
+                        builder: (context) => HomeScren()));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

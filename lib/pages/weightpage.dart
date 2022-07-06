@@ -15,6 +15,7 @@ class WeightPage extends StatefulWidget {
 }
 
 class _WeightPageState extends State<WeightPage> {
+  String weight ='';
   int _weightvalue = 10;
   double _weightvl = 1.0;
   void addvalur() {
@@ -79,7 +80,8 @@ class _WeightPageState extends State<WeightPage> {
                   width: MediaQuery.of(context).size.width / 2,
                   child: TextFormField(
                     onChanged: (value) {
-                      _weightvl = double.parse(value);
+                    //  _weightvl = double.parse(value);
+                    weight =value;
                     },
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,

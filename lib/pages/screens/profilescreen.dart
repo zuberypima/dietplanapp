@@ -14,23 +14,23 @@ class ProfileScreem extends StatefulWidget {
 }
 
 class _ProfileScreemState extends State<ProfileScreem> {
-  var weightbox = Hive.box('userweight');
+  // var weightbox = Hive.box('userweight');
 
-  var heightbox = Hive.box('userheight');
+  // var heightbox = Hive.box('userheight');
 
-  var _bmibox = Hive.box('userbmi');
+  // var _bmibox = Hive.box('userbmi');
 
-  var box = Hive.box('userage');
+  // var box = Hive.box('userage');
 
-  var _bodystatus = Hive.box('status');
+  // var _bodystatus = Hive.box('status');
 
-  var _goalWeight =Hive.box('gweight');
+  // var _goalWeight =Hive.box('gweight');
 
   String newweight='';
 
   @override
   Widget build(BuildContext context) {
-    var status = _bodystatus.get('Status').toString();
+    //var status = _bodystatus.get('Status').toString();
 
     return Scaffold(
       backgroundColor: Colors.grey[350],
@@ -47,11 +47,13 @@ class _ProfileScreemState extends State<ProfileScreem> {
               children: [
                 ProfileContaine(
                   textincontainer: 'Current BMI',
-                  textindex: _bmibox.get('Bmi').toString().trim(),
+                  textindex:''
+                  // _bmibox.get('Bmi').toString().trim(),
                 ),
                 ProfileContaine(
                   textincontainer: 'Current Weight',
-                  textindex: weightbox.get('Weight').toString(),
+                  textindex:''
+                  // weightbox.get('Weight').toString(),
                 )
               ],
             ),
@@ -67,7 +69,8 @@ class _ProfileScreemState extends State<ProfileScreem> {
                 ),
                 ProfileContaine(
                   textincontainer: 'Goal Weight',
-                  textindex: _goalWeight.get('GoalWeight').toString(),
+                  textindex: ''
+                  //_goalWeight.get('GoalWeight').toString(),
                 )
               ],
             ),
@@ -94,19 +97,19 @@ class _ProfileScreemState extends State<ProfileScreem> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    BodyStatusButton(text: 'Under', color:status=='under'? Colors.red:Colors.grey),
-                    BodyStatusButton(
-                      text: 'Nomal',
-                      color:status=='Normal'? Colors.green:Colors.grey
-                    ),
-                    BodyStatusButton(
-                      text: 'Over',
-                      color:status=='Over'? Colors.yellow:Colors.grey
-                    ),
-                    BodyStatusButton(
-                      text: 'Obesit',
-                      color:status=='Obesit'? Colors.red:Colors.grey
-                    ),
+                  //  BodyStatusButton(text: 'Under', color:status=='under'? Colors.red:Colors.grey),
+                 //   BodyStatusButton(
+                   //   text: 'Nomal',
+                    //  color:status=='Normal'? Colors.green:Colors.grey
+                   // ),
+                    // BodyStatusButton(
+                    //   text: 'Over',
+                    //   color:status=='Over'? Colors.yellow:Colors.grey
+                    // ),
+                    // BodyStatusButton(
+                    //   text: 'Obesit',
+                    //   color:status=='Obesit'? Colors.red:Colors.grey
+                    // ),
                   ],
                 ),
               ],
@@ -186,7 +189,8 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ],
                         ),
                         Text(
-                          box.get('Age').toString(),
+                          '',
+                       //   box.get('Age').toString(),
                           style: TextStyle(
                               color: Colors.cyan,
                               fontWeight: FontWeight.w700,
@@ -219,7 +223,8 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ],
                         ),
                         Text(
-                          weightbox.get('Weight').toString() + 'Kg',
+                          '',
+                         // weightbox.get('Weight').toString() + 'Kg',
                           style: TextStyle(
                               color: Colors.cyan,
                               fontWeight: FontWeight.w700,
@@ -252,7 +257,8 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ],
                         ),
                         Text(
-                          heightbox.get('Height').toString() + 'Ft',
+                          '',
+                       //   heightbox.get('Height').toString() + 'Ft',
                           style: TextStyle(
                               color: Colors.cyan,
                               fontWeight: FontWeight.w700,

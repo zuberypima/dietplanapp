@@ -8,13 +8,13 @@ import 'package:toggle_switch/toggle_switch.dart';
 
 ////Page for user to inter his or her height
 
-
-
 class HeightPage extends StatefulWidget {
   String name;
   String age;
   String weight;
-  HeightPage({Key? key,required this.name,required this.age,required this.weight}) : super(key: key);
+  HeightPage(
+      {Key? key, required this.name, required this.age, required this.weight})
+      : super(key: key);
 
   @override
   State<HeightPage> createState() => _HeightPageState();
@@ -23,8 +23,6 @@ class HeightPage extends StatefulWidget {
 class _HeightPageState extends State<HeightPage> {
   int _heightvalue = 2;
   double _height = 1.0;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +60,6 @@ class _HeightPageState extends State<HeightPage> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
           ),
-       
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: Container(
@@ -85,10 +82,16 @@ class _HeightPageState extends State<HeightPage> {
           ),
           InkWell(
               onTap: () {
-               // UserData().adddata(name, age, weight, _heightvalue.toString());
-              
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WorkingHoursPage(name: widget.name,age: widget.age,weight: widget.weight,height: _heightvalue.toString(),)));
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => WorkingHoursPage(
+                              name: widget.name,
+                              age: widget.age,
+                              weight: widget.weight,
+                              height: _heightvalue.toString(),
+                            )));
               },
               child: NextButton('Next'))
         ],
