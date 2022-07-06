@@ -10,7 +10,7 @@ class BIM {
 CollectionReference users = FirebaseFirestore.instance.collection('UserDetails');
 double heightM=0;
   double? bmi;
-  bmicalculator(String weight,String height) async {
+  bmicalculator(String weight,String height,String username) async {
     double _weight = double.parse(weight);
     double _heightft = double.parse(height);
 //change height in meter
@@ -31,15 +31,13 @@ heightM =double.parse((_heightft/3.2808).toStringAsFixed(0));
     else{
     //  await _bodystatus.put('Status', 'Obesit');
     }
-
-    //await _bmibox.put('Bmi', collectbmi);
-    updateUserBMI();
+    updateUserBMI(username);
   }
 
-Future<void> updateUserBMI() {
+Future<void> updateUserBMI(String docId) {
   return users
-    .doc('ABC123')
-    .update({'Weight': 'Stokes and Sons'})
+    .doc(docId)
+    .update({'BMIvalue': 'test'})
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AddUserData{
 CollectionReference _userdetails =FirebaseFirestore.instance.collection('UserDetails');
   userDetails(String name,String  age,String weight,String height,String time,String goal){
-    _userdetails.add({
+    _userdetails.doc(name).set({
       'Name':name,
       'Age':age,
       'Weight':weight,

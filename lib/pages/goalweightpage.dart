@@ -67,11 +67,13 @@ class GoalWeightPage extends StatelessWidget {
                 // final value = goalweight;
                 //  await Hive.box('goalweight').put(key, value);
                 //  await _goalweightbox.put(key, value).toString();
-                BIM().bmicalculator(weight,height);
+              
                 await AddUserData().userDetails(name, age, weight,
                     height.toString(), workingtime, goalweight.toString());
+                
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => HomeScren()));
+                    await      BIM().bmicalculator(weight,height,name);
               },
               child: NextButton('Submit'))
         ],
