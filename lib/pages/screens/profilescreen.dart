@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:smartdietapp/models/bmiupdate.dart';
@@ -14,23 +15,12 @@ class ProfileScreem extends StatefulWidget {
 }
 
 class _ProfileScreemState extends State<ProfileScreem> {
-  // var weightbox = Hive.box('userweight');
-
-  // var heightbox = Hive.box('userheight');
-
-  // var _bmibox = Hive.box('userbmi');
-
-  // var box = Hive.box('userage');
-
-  // var _bodystatus = Hive.box('status');
-
-  // var _goalWeight =Hive.box('gweight');
 
   String newweight='';
-
+final Stream<QuerySnapshot> userStream =FirebaseFirestore.instance.collection('UserDetails').snapshots();
+ CollectionReference users = FirebaseFirestore.instance.collection('UserDetails');
   @override
   Widget build(BuildContext context) {
-    //var status = _bodystatus.get('Status').toString();
 
     return Scaffold(
       backgroundColor: Colors.grey[350],
@@ -38,7 +28,22 @@ class _ProfileScreemState extends State<ProfileScreem> {
         elevation: 0,
         backgroundColor: Colors.orange,
       ),
-      body: ListView(
+      body: FutureBuilder<DocumentSnapshot>(
+      future: users.doc('rGMS7ZCAJQTefXMgNmSf').get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+
+        if (snapshot.hasError) {
+          return Text("Something went wrong");
+        }
+
+        if (snapshot.hasData && !snapshot.data!.exists) {
+          return Text("Document does not exist");
+        }
+      
+        if (snapshot.connectionState == ConnectionState.done) {
+          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+          return       ListView(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -48,12 +53,10 @@ class _ProfileScreemState extends State<ProfileScreem> {
                 ProfileContaine(
                   textincontainer: 'Current BMI',
                   textindex:''
-                  // _bmibox.get('Bmi').toString().trim(),
                 ),
                 ProfileContaine(
                   textincontainer: 'Current Weight',
-                  textindex:''
-                  // weightbox.get('Weight').toString(),
+                  textindex:'${data['Weight']}'
                 )
               ],
             ),
@@ -69,8 +72,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
                 ),
                 ProfileContaine(
                   textincontainer: 'Goal Weight',
-                  textindex: ''
-                  //_goalWeight.get('GoalWeight').toString(),
+                  textindex: '${data['GoalWeight']}'
                 )
               ],
             ),
@@ -97,19 +99,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  //  BodyStatusButton(text: 'Under', color:status=='under'? Colors.red:Colors.grey),
-                 //   BodyStatusButton(
-                   //   text: 'Nomal',
-                    //  color:status=='Normal'? Colors.green:Colors.grey
-                   // ),
-                    // BodyStatusButton(
-                    //   text: 'Over',
-                    //   color:status=='Over'? Colors.yellow:Colors.grey
-                    // ),
-                    // BodyStatusButton(
-                    //   text: 'Obesit',
-                    //   color:status=='Obesit'? Colors.red:Colors.grey
-                    // ),
+               
                   ],
                 ),
               ],
@@ -189,7 +179,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ],
                         ),
                         Text(
-                          '',
+                        '${data['Age']}',
                        //   box.get('Age').toString(),
                           style: TextStyle(
                               color: Colors.cyan,
@@ -223,7 +213,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ],
                         ),
                         Text(
-                          '',
+                     '${data['Weight']}',
                          // weightbox.get('Weight').toString() + 'Kg',
                           style: TextStyle(
                               color: Colors.cyan,
@@ -257,7 +247,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ],
                         ),
                         Text(
-                          '',
+                         '${data['Height']}',
                        //   heightbox.get('Height').toString() + 'Ft',
                           style: TextStyle(
                               color: Colors.cyan,
@@ -285,7 +275,13 @@ updateButtonn();
             ),
           ),
         ],
-      ),
+      );
+        }
+
+        return Center(child: CircularProgressIndicator(),);
+      },
+    )
+
     );
 
 
@@ -343,3 +339,18 @@ newweight =value;
   });
 }
 }
+
+
+   //  BodyStatusButton(text: 'Under', color:status=='under'? Colors.red:Colors.grey),
+                 //   BodyStatusButton(
+                   //   text: 'Nomal',
+                    //  color:status=='Normal'? Colors.green:Colors.grey
+                   // ),
+                    // BodyStatusButton(
+                    //   text: 'Over',
+                    //   color:status=='Over'? Colors.yellow:Colors.grey
+                    // ),
+                    // BodyStatusButton(
+                    //   text: 'Obesit',
+                    //   color:status=='Obesit'? Colors.red:Colors.grey
+                    // ),
