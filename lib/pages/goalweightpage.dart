@@ -8,7 +8,7 @@ import 'package:smartdietapp/widgets/nextbutton.dart';
 
 class GoalWeightPage extends StatelessWidget {
   GoalWeightPage({Key? key}) : super(key: key);
-  var _goalweightbox = Hive.box('gweight');
+ // var _goalweightbox = Hive.box('gweight');
 
   final TextEditingController _goalweight = TextEditingController();
   double? goalweight ;
@@ -53,7 +53,7 @@ class GoalWeightPage extends StatelessWidget {
                 final key = 'GoalWeight';
                 final value = goalweight;
                 //  await Hive.box('goalweight').put(key, value);
-                await _goalweightbox.put(key, value).toString();
+              //  await _goalweightbox.put(key, value).toString();
 
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => HomeScren()));

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartdietapp/models/adduserdata.dart';
 import 'package:smartdietapp/models/datatofirebase.dart';
-import 'package:smartdietapp/pages/lifestyledetails.dart';
+import 'package:smartdietapp/pages/workinghours.dart';
 import 'package:smartdietapp/widgets/nextbutton.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -24,27 +24,7 @@ class _HeightPageState extends State<HeightPage> {
   int _heightvalue = 2;
   double _height = 1.0;
 
-  String dislable = '';
-  void addvalur() {
-    setState(() {
-      _heightvalue += 1;
-    });
-  }
 
-  void subvalur() {
-    setState(() {
-      _heightvalue -= 1;
-    });
-  }
-
- // var box = Hive.box('username');
- // var box1 = Hive.box('userage');
- // var box2 = Hive.box('userweight');
-
-  // final _nameuser = Hive.box('username').values.toString();
-  // final _age = Hive.box('usedage').values.toString();
-  // final _weight = Hive.box('userweight').values.toString();
-  //String _username =UserInfomation().name;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +58,7 @@ class _HeightPageState extends State<HeightPage> {
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: Text(
-              'What is your Height (${dislable})',
+              'What is your Height ()',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
           ),
@@ -106,9 +86,9 @@ class _HeightPageState extends State<HeightPage> {
           InkWell(
               onTap: () {
                // UserData().adddata(name, age, weight, _heightvalue.toString());
-               AddUserData().userDetails(widget.name, widget.age,widget.weight,_height.toString());
+              
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LifeStylePage()));
+                    MaterialPageRoute(builder: (context) => WorkingHoursPage(name: widget.name,age: widget.age,weight: widget.weight,height: _heightvalue.toString(),)));
               },
               child: NextButton('Next'))
         ],
