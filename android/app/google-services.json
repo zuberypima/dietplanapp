@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479013071797",
+    "project_id": "smartdietapp-71c5e",
+    "storage_bucket": "smartdietapp-71c5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479013071797:android:feb258ab5f3fd5b0dac7fc",
+        "android_client_info": {
+          "package_name": "com.example.smartdietapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479013071797-9mqdmfu4nn7habu08cdj717hqusm1rtg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc1YKc7EQ58JT8S8g5QXK6acFzcugU8lw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479013071797-9mqdmfu4nn7habu08cdj717hqusm1rtg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
