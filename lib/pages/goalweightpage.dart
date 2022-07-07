@@ -21,7 +21,6 @@ class GoalWeightPage extends StatelessWidget {
       required this.height,
       required this.workingtime})
       : super(key: key);
-  // var _goalweightbox = Hive.box('gweight');
 
   final TextEditingController _goalweight = TextEditingController();
   double? goalweight;
@@ -60,20 +59,14 @@ class GoalWeightPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20))),
                 )),
           ),
-          // FIrstForm(),
           InkWell(
               onTap: () async {
-                // final key = 'GoalWeight';
-                // final value = goalweight;
-                //  await Hive.box('goalweight').put(key, value);
-                //  await _goalweightbox.put(key, value).toString();
-              
                 await AddUserData().userDetails(name, age, weight,
                     height.toString(), workingtime, goalweight.toString());
                 
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => HomeScren()));
-                    await      BIM().bmicalculator(weight,height,name);
+           
               },
               child: NextButton('Submit'))
         ],

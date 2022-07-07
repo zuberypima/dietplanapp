@@ -49,7 +49,7 @@ class _WorkingHoursPageState extends State<WorkingHoursPage> {
                   width: MediaQuery.of(context).size.width / 2,
                   child: TextFormField(
                     onChanged: (value) {
-                      //  _weightvl = double.parse(value);
+_workingtime =value;
                     },
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,

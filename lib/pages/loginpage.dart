@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:smartdietapp/pages/homepage.dart';
 import 'package:smartdietapp/pages/registrationpage.dart';
 import 'package:smartdietapp/pages/screens/homescreen.dart';
 import 'package:smartdietapp/pages/usedetailspage.dart';
@@ -74,22 +72,9 @@ class LoginPage extends StatelessWidget {
                     await _auth.signInWithEmailAndPassword(email: _email!, password: _password!).then((value) {
                        Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => FutureBuilder(
-                      future: Hive.openBox('username').then((value) async{
-                      await Hive.openBox('userage')
-                            .then((value) {
-                              Hive.openBox("userweight");
-                            })
-                            .then((value) => Hive.openBox("userheight"))
-                            .then((value) => Hive.openBox('userbmi'))
-                            .then((value) => Hive.openBox('goalweight'));
-                      }),
-                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                        return HomeScren();
-                      },
-                    ),
-                  ),
+                 MaterialPageRoute(builder: ((context)=>UserDetailsPage() 
+                   
+                 ))
                 );
                     });
                 }on FirebaseAuthException catch(e){
