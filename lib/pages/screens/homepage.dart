@@ -6,6 +6,7 @@ import 'package:smartdietapp/pages/screens/profilescreen.dart';
 
 
 class HomeScren extends StatefulWidget {
+  //String name;
   const HomeScren({ Key? key }) : super(key: key);
 
   @override

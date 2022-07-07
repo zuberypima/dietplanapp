@@ -8,7 +8,8 @@ import 'package:smartdietapp/widgets/profilecontaine.dart';
 
 
 class ProfileScreem extends StatefulWidget {
-  ProfileScreem({Key? key}) : super(key: key);
+  //String username;
+  ProfileScreem({Key? key,}) : super(key: key);
 
   @override
   State<ProfileScreem> createState() => _ProfileScreemState();
@@ -29,7 +30,7 @@ final Stream<QuerySnapshot> userStream =FirebaseFirestore.instance.collection('U
         backgroundColor: Colors.orange,
       ),
       body: FutureBuilder<DocumentSnapshot>(
-      future: users.doc('rGMS7ZCAJQTefXMgNmSf').get(),
+      future: users.doc('zubery').get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
 
@@ -52,7 +53,7 @@ final Stream<QuerySnapshot> userStream =FirebaseFirestore.instance.collection('U
               children: [
                 ProfileContaine(
                   textincontainer: 'Current BMI',
-                  textindex:''
+                  textindex:'${data['BMIvalue']}'
                 ),
                 ProfileContaine(
                   textincontainer: 'Current Weight',
