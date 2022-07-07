@@ -40,7 +40,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                       }
 
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Text("Loading");
+                        return Center(child: CircularProgressIndicator(),);
                       }
 
                       return ListView(
