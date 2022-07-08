@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smartdietapp/pages/registrationpage.dart';
 import 'package:smartdietapp/pages/screens/homepage.dart';
 import 'package:smartdietapp/pages/usedetailspage.dart';
 import 'package:smartdietapp/widgets/nextbutton.dart';
@@ -94,7 +95,7 @@ class LoginPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>HomeScren()));
+                        builder: (context) =>RegistrationPage()));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

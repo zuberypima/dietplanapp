@@ -21,6 +21,7 @@ class _FoodDetailsState extends State<FoodDetails> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.orange[200],
+          title: Text('Sugetsed Foods'),
         ),
         body: ListView(children: [
           Padding(
@@ -44,7 +45,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                       }
 
                       return ListView(
-                        children: snapshot.data!.docs
+                        children: snapshot.data!.docs 
                             .map((DocumentSnapshot document) {
                           Map<String, dynamic> data =
                               document.data()! as Map<String, dynamic>;

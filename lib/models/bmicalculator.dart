@@ -8,6 +8,8 @@ class BIM {
   // var _bmibox = Hive.box('userbmi');
   // var _bodystatus=Hive.box('status');
 CollectionReference users = FirebaseFirestore.instance.collection('UserDetails');
+CollectionReference bodystatus = FirebaseFirestore.instance.collection('Bodystatus');
+
 double heightM=0;
   double? bmi;
  Future<String?>? bmicalculator(String weight,String height,) async {
@@ -21,15 +23,27 @@ heightM =double.parse((_heightft/3.2808).toStringAsFixed(0));
     var collectbmi = double.parse(bmi.toString());
     if (bmi! <= 18.4){
     //  await _bodystatus.put('Status', 'under');
+    bodystatus.doc('status').set({
+      'Name':'under'
+    });
     }
     else if (bmi! >= 18.5 && bmi! <=24.9){
-    //  await _bodystatus.put('Status', 'Normal');
+    //  await _bodystatus.put('Status', '');
+    bodystatus.doc('status').set({
+      'Name':'Normal'
+    });
     }
     else if (bmi! >= 25.0  && bmi! <=39.9	){
     //  await _bodystatus.put('Status', 'Over');
+     bodystatus.doc('status').set({
+      'Name':'Over'
+    });
     }
     else{
     //  await _bodystatus.put('Status', 'Obesit');
+     bodystatus.doc('status').set({
+      'Name':'Obesit'
+    });
     }
     //updateUserBMI(username);
     return bmi.toString();
