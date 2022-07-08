@@ -5,7 +5,9 @@ import 'package:smartdietapp/widgets/nextbutton.dart';
 
 
 class UserDetailsPage extends StatefulWidget {
-  UserDetailsPage({Key? key}) : super(key: key);
+  String email;
+  String password;
+  UserDetailsPage({Key? key,required this.email,required this.password}) : super(key: key);
 
   @override
   State<UserDetailsPage> createState() => _UserDetailsPageState();
@@ -93,7 +95,7 @@ onChanged: ((value) {
               onTap: () async {
                //await AddUserData().userDetails('jiji', 'hjhj');
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WeightPage(name: _username,age: _age,)));
+                    MaterialPageRoute(builder: (context) => WeightPage(name: _username,age: _age,email: widget.email,pasword: widget.password,)));
               },
               child: NextButton('Next')),
         ],

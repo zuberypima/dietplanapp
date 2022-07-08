@@ -12,8 +12,10 @@ class HeightPage extends StatefulWidget {
   String name;
   String age;
   String weight;
+  String email;
+  String password;
   HeightPage(
-      {Key? key, required this.name, required this.age, required this.weight})
+      {Key? key, required this.name, required this.age, required this.weight,required this.email,required this.password})
       : super(key: key);
 
   @override
@@ -91,6 +93,8 @@ class _HeightPageState extends State<HeightPage> {
                               age: widget.age,
                               weight: widget.weight,
                               height: _heightvalue.toString(),
+                              email: widget.email,
+                              password: widget.password,
                             )));
               },
               child: NextButton('Next'))

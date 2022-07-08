@@ -7,7 +7,9 @@ import 'package:toggle_switch/toggle_switch.dart';
 class WeightPage extends StatefulWidget {
   String name;
   String age;
-  WeightPage({Key? key, required this.name, required this.age})
+  String email;
+  String pasword;
+  WeightPage({Key? key, required this.name, required this.age,required this.email,required this.pasword})
       : super(key: key);
 
   @override
@@ -105,6 +107,8 @@ class _WeightPageState extends State<WeightPage> {
                                 name: widget.name,
                                 age: widget.age,
                                 weight: _weightvalue.toString(),
+                                email: widget.email,
+                                password: widget.pasword,
                               )));
                 },
                 child: NextButton('Next'))

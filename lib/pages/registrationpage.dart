@@ -15,8 +15,8 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
   final _auth = FirebaseAuth.instance;
-  String? _email;
-  String? _password;
+  String _email='';
+  String _password='';
   bool isSigin=false;
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                    Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>UserDetailsPage()
+                    builder: (context) =>UserDetailsPage(email: _email,password: _password,)
                   ),
                 );
                 // try{}catch(e){

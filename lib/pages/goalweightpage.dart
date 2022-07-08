@@ -13,13 +13,18 @@ class GoalWeightPage extends StatelessWidget {
   String weight;
   String height;
   String workingtime;
+  String email;
+  String password;
   GoalWeightPage(
       {Key? key,
       required this.name,
       required this.age,
       required this.weight,
       required this.height,
-      required this.workingtime})
+      required this.workingtime,
+      required this.email,
+      required this.password
+      })
       : super(key: key);
 
   final TextEditingController _goalweight = TextEditingController();
@@ -62,7 +67,7 @@ class GoalWeightPage extends StatelessWidget {
           InkWell(
               onTap: () async {
                 await AddUserData().userDetails(name, age, weight,
-                    height.toString(), workingtime, goalweight.toString());
+                    height.toString(), workingtime, goalweight.toString(),email,password);
                 
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => HomeScren()));
