@@ -9,12 +9,17 @@ class WorkingHoursPage extends StatefulWidget {
   String age;
   String weight;
   String height;
+  String email;
+  String password;
   WorkingHoursPage(
       {Key? key,
       required this.name,
       required this.age,
       required this.weight,
-      required this.height})
+      required this.height,
+      required this.email,
+      required this.password
+      })
       : super(key: key);
 
   @override
@@ -77,6 +82,8 @@ _workingtime =value;
                               weight: widget.weight,
                               height: widget.height,
                               workingtime: _workingtime,
+                              email: widget.email,
+                              password: widget.password,
                             )));
               },
               child: NextButton('Next'))

@@ -66,24 +66,7 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           InkWell(
-              onTap: () async {
-                // try{
-                //     await _auth.signInWithEmailAndPassword(email: _email!, password: _password!).then((value) {
-                //        Navigator.push(
-                //   context,
-                //  MaterialPageRoute(builder: ((context)=>UserDetailsPage() 
-                   
-                //  ))
-                // );
-                //     });
-                // }on FirebaseAuthException catch(e){
-                //   print('check the password');
-                // }
-                // catch(e){
-                //   print('Error');
-                // }
-              
-               
+              onTap: () async {               
                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScren()));
             
               },
