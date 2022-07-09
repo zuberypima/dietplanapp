@@ -15,7 +15,12 @@ class HeightPage extends StatefulWidget {
   String email;
   String password;
   HeightPage(
-      {Key? key, required this.name, required this.age, required this.weight,required this.email,required this.password})
+      {Key? key,
+      required this.name,
+      required this.age,
+      required this.weight,
+      required this.email,
+      required this.password})
       : super(key: key);
 
   @override
@@ -23,9 +28,7 @@ class HeightPage extends StatefulWidget {
 }
 
 class _HeightPageState extends State<HeightPage> {
-  int _heightvalue = 2;
-  double _height = 1.0;
-
+  String _height='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +71,7 @@ class _HeightPageState extends State<HeightPage> {
                 width: MediaQuery.of(context).size.width / 2,
                 child: TextFormField(
                   onChanged: (value) {
-                    _height = double.parse(value);
+                    _height = value;
                   },
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
@@ -84,7 +87,6 @@ class _HeightPageState extends State<HeightPage> {
           ),
           InkWell(
               onTap: () {
-
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -92,7 +94,7 @@ class _HeightPageState extends State<HeightPage> {
                               name: widget.name,
                               age: widget.age,
                               weight: widget.weight,
-                              height: _heightvalue.toString(),
+                              height: _height,
                               email: widget.email,
                               password: widget.password,
                             )));

@@ -97,28 +97,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     builder: (context) =>UserDetailsPage(email: _email,password: _password,)
                   ),
                 );
-                // try{}catch(e){
-                //    await _auth
-                //     .createUserWithEmailAndPassword(
-                //         email: _email!, password: _password!);
-                          
-//  Navigator.of(context).pushReplacement(
-//           MaterialPageRoute(
-//             builder: (context) => PageOne()));
-
-                //   Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) =>PageOne()
-                //   ),
-                // );
-           //     }
-                // });
-                
-             //   }
-                // await _auth
-                //     .createUserWithEmailAndPassword(
-                //         email: _email!, password: _password!);
 
               
               },

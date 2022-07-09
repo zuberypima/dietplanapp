@@ -67,7 +67,7 @@ class LoginPage extends StatelessWidget {
           ),
           InkWell(
               onTap: () async {               
-               Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScren()));
+              // Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScren()));
             
               },
               child: NextButton('Login')),

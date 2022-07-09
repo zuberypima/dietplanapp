@@ -18,19 +18,6 @@ class WeightPage extends StatefulWidget {
 
 class _WeightPageState extends State<WeightPage> {
   String weight ='';
-  int _weightvalue = 10;
-  double _weightvl = 1.0;
-  void addvalur() {
-    setState(() {
-      _weightvalue += 1;
-    });
-  }
-
-  void subvalur() {
-    setState(() {
-      _weightvalue -= 1;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +69,6 @@ class _WeightPageState extends State<WeightPage> {
                   width: MediaQuery.of(context).size.width / 2,
                   child: TextFormField(
                     onChanged: (value) {
-                    //  _weightvl = double.parse(value);
                     weight =value;
                     },
                     keyboardType: TextInputType.number,
@@ -106,7 +92,7 @@ class _WeightPageState extends State<WeightPage> {
                           builder: (context) => HeightPage(
                                 name: widget.name,
                                 age: widget.age,
-                                weight: _weightvalue.toString(),
+                                weight: weight,
                                 email: widget.email,
                                 password: widget.pasword,
                               )));

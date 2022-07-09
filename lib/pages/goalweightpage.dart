@@ -67,7 +67,7 @@ class GoalWeightPage extends StatelessWidget {
           InkWell(
               onTap: () async {
                 await AddUserData().userDetails(name, age, weight,
-                    height.toString(), workingtime, goalweight.toString(),email,password);
+                    height, workingtime, goalweight.toString(),email,password);
                 
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => HomeScren()));

@@ -3,11 +3,11 @@ import 'package:smartdietapp/models/adduserdata.dart';
 import 'package:smartdietapp/pages/weightpage.dart';
 import 'package:smartdietapp/widgets/nextbutton.dart';
 
-
 class UserDetailsPage extends StatefulWidget {
   String email;
   String password;
-  UserDetailsPage({Key? key,required this.email,required this.password}) : super(key: key);
+  UserDetailsPage({Key? key, required this.email, required this.password})
+      : super(key: key);
 
   @override
   State<UserDetailsPage> createState() => _UserDetailsPageState();
@@ -16,9 +16,9 @@ class UserDetailsPage extends StatefulWidget {
 class _UserDetailsPageState extends State<UserDetailsPage> {
   //String? _email,_password;
 
-String _username ='';
-String _age='';
-String _gender='';
+  String _username = '';
+  String _age = '';
+  String _gender = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +35,9 @@ String _gender='';
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
             child: TextFormField(
-onChanged: ((value) {
-  _username =value;
-}),
+              onChanged: ((value) {
+                _username = value;
+              }),
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 2.5),
@@ -58,7 +58,7 @@ onChanged: ((value) {
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 35),
             child: TextFormField(
               onChanged: ((value) {
-                _age =value;
+                _age = value;
               }),
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -79,9 +79,7 @@ onChanged: ((value) {
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
             child: TextFormField(
-              onChanged: (value) {
-                
-              },
+              onChanged: (value) {},
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 2.5),
@@ -93,9 +91,16 @@ onChanged: ((value) {
           ),
           InkWell(
               onTap: () async {
-               //await AddUserData().userDetails('jiji', 'hjhj');
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WeightPage(name: _username,age: _age,email: widget.email,pasword: widget.password,)));
+                //await AddUserData().userDetails('jiji', 'hjhj');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => WeightPage(
+                              name: _username,
+                              age: _age,
+                              email: widget.email,
+                              pasword: widget.password,
+                            )));
               },
               child: NextButton('Next')),
         ],
