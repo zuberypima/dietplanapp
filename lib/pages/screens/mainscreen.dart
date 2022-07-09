@@ -173,21 +173,24 @@ class _MainScreenState extends State<MainScreen> {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 30,
-                                          backgroundImage: NetworkImage(
-                                              'https://media.istockphoto.com/photos/hydration-is-her-beauty-secret-picture-id658408448?b=1&k=20&m=658408448&s=170667a&w=0&h=NG-q9lSIlRbi0XivtmzD7UfSQMN9yQQroZi37d1iM7Y='),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          '1 Glass of Water,with Leamon',
-                                          style: TextStyle(fontSize: 16),
-                                        )
-                                      ],
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width/1.4,
+                                      child: Row(
+                                        children: [
+                                          CircleAvatar(
+                                            radius: 30,
+                                            backgroundImage: NetworkImage(
+                                                'https://media.istockphoto.com/photos/hydration-is-her-beauty-secret-picture-id658408448?b=1&k=20&m=658408448&s=170667a&w=0&h=NG-q9lSIlRbi0XivtmzD7UfSQMN9yQQroZi37d1iM7Y='),
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text(
+                                            '${data['What']}',
+                                            style: TextStyle(fontSize: 16),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

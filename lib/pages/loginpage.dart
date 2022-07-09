@@ -1,17 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smartdietapp/pages/registrationpage.dart';
 import 'package:smartdietapp/pages/screens/homepage.dart';
-import 'package:smartdietapp/pages/usedetailspage.dart';
 import 'package:smartdietapp/widgets/nextbutton.dart';
 
-
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
-  String? _email;
-  String? _password;
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String _username = '';
+
+  String _password = '';
 
   final _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +30,7 @@ class LoginPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20, bottom: 10),
             child: Text(
-              'Email Address',
+              'User name',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
           ),
@@ -31,7 +38,7 @@ class LoginPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: TextFormField(
               onChanged: ((value) {
-                _email = value.trim();
+                _username = value;
               }),
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
@@ -54,7 +61,7 @@ class LoginPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
             child: TextFormField(
               onChanged: ((value) {
-                _password = value.trim();
+                _password = value;
               }),
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -66,9 +73,9 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           InkWell(
-              onTap: () async {               
-              // Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScren()));
-            
+              onTap: () async {
+               // checkuserverificarion(_username, _password);
+                checkuserverificarion('zubery', '1234');
               },
               child: NextButton('Login')),
           Padding(
@@ -78,7 +85,7 @@ class LoginPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>RegistrationPage()));
+                        builder: (context) => RegistrationPage()));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -100,5 +107,43 @@ class LoginPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  checkuserverificarion(String uid, String password) {
+    FirebaseFirestore.instance
+        .collection('UserDetails')
+        .where('Name', isEqualTo: uid)
+        .where('Password', isEqualTo: password)
+        .get()
+        .then((QuerySnapshot snapshots) {
+      if (snapshots.docs.isNotEmpty) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => HomeScren(
+                      username: uid,
+                    )));
+      }
+      if (snapshots.docs.isEmpty) {
+        return showDialog(
+            context: context,
+            builder: (context) {
+              return Container(
+                child: AlertDialog(
+                  content: Container(
+                      height: 230,
+                      decoration: BoxDecoration(
+                          color: Colors.teal,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Center(
+                          child: Text(
+                        'Hakikisha taaarifa ulizoweka',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ))),
+                ),
+              );
+            });
+      }
+    });
   }
 }

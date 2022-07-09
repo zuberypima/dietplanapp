@@ -8,8 +8,8 @@ import 'package:smartdietapp/widgets/profilecontaine.dart';
 
 
 class ProfileScreem extends StatefulWidget {
-  //String username;
-  ProfileScreem({Key? key,}) : super(key: key);
+  String username;
+  ProfileScreem({Key? key,required this.username}) : super(key: key);
 
   @override
   State<ProfileScreem> createState() => _ProfileScreemState();
@@ -30,7 +30,7 @@ final Stream<QuerySnapshot> userStream =FirebaseFirestore.instance.collection('U
         backgroundColor: Colors.orange,
       ),
       body: FutureBuilder<DocumentSnapshot>(
-      future: users.doc('zubery').get(),
+      future: users.doc(widget.username).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
 

@@ -70,7 +70,7 @@ class GoalWeightPage extends StatelessWidget {
                     height, workingtime, goalweight.toString(),email,password);
                 
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScren()));
+                    MaterialPageRoute(builder: (context) => HomeScren(username: name,)));
            
               },
               child: NextButton('Submit'))

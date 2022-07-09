@@ -6,8 +6,8 @@ import 'package:smartdietapp/pages/screens/profilescreen.dart';
 
 
 class HomeScren extends StatefulWidget {
-  //String name;
-  const HomeScren({ Key? key }) : super(key: key);
+  String username;
+   HomeScren({ Key? key ,required this.username}) : super(key: key);
 
   @override
   State<HomeScren> createState() => _HomeScrenState();
@@ -17,22 +17,18 @@ class _HomeScrenState extends State<HomeScren> {
 
 int _selectedpage=0;
 
-final _pagesselected =[
-   MainScreen(),
-   DataScreen(),
-   ProfileScreem()
-];
 
   @override
   Widget build(BuildContext context) {
+    
+final _pagesselected =[
+   MainScreen(),
+   DataScreen(),
+   ProfileScreem(username: widget.username,)
+];
     return SafeArea(child: Scaffold(
-      
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: Colors.orange,
-      //   automaticallyImplyLeading: false,
-      //   title: Center(child: Text('Smart Diets')),),
-        body: _pagesselected[_selectedpage],
+              body: 
+        _pagesselected[_selectedpage],
     bottomNavigationBar: BottomNavigationBar(
       currentIndex: _selectedpage,
       onTap: (int index){
