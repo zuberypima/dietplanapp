@@ -1,23 +1,39 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:smartdietapp/subscreens/fooddetails.dart';
 import 'package:smartdietapp/subscreens/workingsteps.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final Stream<QuerySnapshot> foodstream = FirebaseFirestore.instance
-      .collection('DeitPlanData')
+
+  //Food Streems
+    var teststream;
+  final Stream<QuerySnapshot> normalfoods = FirebaseFirestore.instance
+      .collection('NormalWeightData')
       .orderBy('position')
       .snapshots();
+   final Stream<QuerySnapshot> underfoods = FirebaseFirestore.instance
+      .collection('UnderWeightData')
+      .orderBy('position')
+      .snapshots();
+  final Stream<QuerySnapshot> obersityfoods = FirebaseFirestore.instance
+ .collection('OverWeightData').orderBy('position') 
+      .snapshots();
+
+
+  var _statusbox =Hive.box('StatusBox');
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    //check test
+    var getstatus =_statusbox.get('Status');
+      return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
@@ -133,7 +149,9 @@ class _MainScreenState extends State<MainScreen> {
               height: MediaQuery.of(context).size.height / 2,
               width: MediaQuery.of(context).size.width,
               child: StreamBuilder<QuerySnapshot>(
-                stream: foodstream,
+                stream:getstatus=='Normal'?normalfoods:getstatus=='Under'?underfoods:obersityfoods,
+                //checknormal==true?normalfoods:checkover==true?overfoods:obersityfoods,
+                   
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -174,7 +192,8 @@ class _MainScreenState extends State<MainScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Container(
-                                      width: MediaQuery.of(context).size.width/1.4,
+                                      width: MediaQuery.of(context).size.width /
+                                          1.4,
                                       child: Row(
                                         children: [
                                           CircleAvatar(
@@ -195,10 +214,16 @@ class _MainScreenState extends State<MainScreen> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 5,),
+                              SizedBox(
+                                height: 5,
+                              ),
                               InkWell(
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: ((context)=>FoodDetails())));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              FoodDetails())));
                                 },
                                 child: Text(
                                   'Add Food +',
@@ -221,4 +246,6 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
+
+
 }

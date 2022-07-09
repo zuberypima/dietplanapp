@@ -6,7 +6,7 @@ class AddUserData{
 CollectionReference _userdetails =FirebaseFirestore.instance.collection('UserDetails');
   userDetails(String name,String  age,String weight,String height,String time,String goal,String email,String password)async{
     String bmivalue;
-       bmivalue=await BIM().bmicalculator(weight,height) as String;
+       bmivalue=await BIM().bmicalculator(weight,height,name) as String;
     _userdetails.doc(name).set({
       'Name':name,
       'Age':age,
@@ -16,7 +16,8 @@ CollectionReference _userdetails =FirebaseFirestore.instance.collection('UserDet
       'GoalWeight':goal,
       'BMIvalue':bmivalue,
       'Email':email,
-      'Password':password
+      'Password':password,
+      'Status':''
 
     });
   }

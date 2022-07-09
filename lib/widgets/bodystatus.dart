@@ -11,12 +11,12 @@ class BodyStatusButton extends StatefulWidget {
 }
 
 class _BodyStatusButtonState extends State<BodyStatusButton> {
-  var _bmibox = Hive.box('userbmi');
+ // var _bmibox = Hive.box('userbmi');
 
   @override
   Widget build(BuildContext context) {
        
- var status = _bmibox.get('Bmi').toString();
+ //var status = _bmibox.get('Bmi').toString();
     return Padding(
       padding: const EdgeInsets.only(left: 10),
       child: Container(
