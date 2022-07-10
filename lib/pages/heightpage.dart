@@ -71,7 +71,9 @@ class _HeightPageState extends State<HeightPage> {
                 width: MediaQuery.of(context).size.width / 2,
                 child: TextFormField(
                   onChanged: (value) {
-                    _height = value;
+                   setState(() {
+                      _height = value;
+                   });
                   },
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,

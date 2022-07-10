@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:smartdietapp/subscreens/advicepage.dart';
+import 'package:smartdietapp/subscreens/tipspage.dart';
 import 'package:smartdietapp/subscreens/fooddetails.dart';
 import 'package:smartdietapp/subscreens/workingsteps.dart';
 
@@ -58,16 +60,21 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20, bottom: 20),
-                    child: Container(
-                        height: 50,
-                        width: 200,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.cyan,
-                              width: 3,
-                            ),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Center(child: Text('Sugetion what to take'))),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: ((context) =>AdvicesPage())));
+                      },
+                      child: Container(
+                          height: 50,
+                          width: 200,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.cyan,
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Center(child: Text('Sugetion what to take'))),
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

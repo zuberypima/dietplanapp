@@ -2,14 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartdietapp/pages/loginpage.dart';
+import 'package:smartdietapp/servicers/notificationservice.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  NotificationService().initNotification();
   await Hive.initFlutter();
   await Hive.openBox('StatusBox');
-    await Hive.openBox('BMIBox');
-
+  await Hive.openBox('BMIBox');
 
   runApp(const MyApp());
 }

@@ -69,7 +69,9 @@ class _WeightPageState extends State<WeightPage> {
                   width: MediaQuery.of(context).size.width / 2,
                   child: TextFormField(
                     onChanged: (value) {
-                    weight =value;
+                   setState(() {
+                      weight =value;
+                   });
                     },
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,

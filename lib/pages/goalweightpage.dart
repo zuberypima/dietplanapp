@@ -28,7 +28,7 @@ class GoalWeightPage extends StatelessWidget {
       : super(key: key);
 
   final TextEditingController _goalweight = TextEditingController();
-  double? goalweight;
+  String goalweight ='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +50,7 @@ class GoalWeightPage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 2,
                 child: TextFormField(
                   onChanged: (value) {
-                    goalweight = double.parse(value);
+                    goalweight = value;
                   },
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
@@ -66,7 +66,7 @@ class GoalWeightPage extends StatelessWidget {
           ),
           InkWell(
               onTap: () async {
-                await AddUserData().userDetails(name, age, weight,
+                await AddUserData().userDetails(name, age,weight,
                     height, workingtime, goalweight.toString(),email,password);
                 
                 Navigator.push(context,

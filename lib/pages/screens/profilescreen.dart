@@ -27,7 +27,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
   @override
   Widget build(BuildContext context) {
     //var bmivalue =_statusbox.get('Status');
-        var bmi =_bmibox.get('BMI').toString();
+       var bmi =_bmibox.get('BMI').toString();
 
     return Scaffold(
         backgroundColor: Colors.grey[350],
@@ -117,8 +117,8 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ? Colors.yellow
                           : Colors.grey),
                   BodyStatusButton(
-                      text: 'Obesit',
-                      color:_statusbox.get('Status')== 'Obesit'
+                      text: 'Obesity',
+                      color:_statusbox.get('Status')== 'Obesity'
                           ? Colors.red
                           : Colors.grey),],),
                       ],
