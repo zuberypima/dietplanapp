@@ -287,8 +287,6 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ),
                           InkWell(
                               onTap: () {
-                                // print(_goalWeight.get('GoalWeight'));
-                                // print( Hive.box('userweight').get('Weight').toString());
                                 updateButtonn();
                               },
                               child: NextButton('Update')),
@@ -357,7 +355,8 @@ class _ProfileScreemState extends State<ProfileScreem> {
                 padding: const EdgeInsets.only(left: 30, right: 30),
                 child: InkWell(
                     onTap: () {
-                      BIMUpdate().bmiUpdate(newweight);
+                      BIMupdate().bmicalculator(newweight);
+                      Navigator.pop(context);
                     },
                     child: NextButton('Submit')),
               )
@@ -367,16 +366,3 @@ class _ProfileScreemState extends State<ProfileScreem> {
   }
 }
 
-// BodyStatusButton(text: 'Under', color:status=='under'? Colors.red:Colors.grey),
-//                BodyStatusButton(
-//                  text: 'Nomal',
-//                  color:status=='Normal'? Colors.green:Colors.grey
-//                ),
-//                 BodyStatusButton(
-//                   text: 'Over',
-//                   color:status=='Over'? Colors.yellow:Colors.grey
-//                 ),
-//                 BodyStatusButton(
-//                   text: 'Obesit',
-//                   color:status=='Obesit'? Colors.red:Colors.grey
-//                 ),

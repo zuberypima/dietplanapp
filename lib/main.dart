@@ -11,6 +11,7 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('StatusBox');
   await Hive.openBox('BMIBox');
+   await Hive.openBox('HeightBox');
 
   runApp(const MyApp());
 }

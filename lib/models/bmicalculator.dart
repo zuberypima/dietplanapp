@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class BIM {
-  // var _weightbox = Hive.box('userweight');
-  // var _heightbox = Hive.box('userheight');
+  
+   //var _weightbox = Hive.box('userweight');
+   var _heightbox = Hive.box('HeightBox');
 
   //var _bmibox = Hive.box('userbmi');
   var _bodystatus = Hive.box('StatusBox');
@@ -22,7 +23,7 @@ class BIM {
     double _heightft = double.parse(height);
 //change height in meter
     heightM = double.parse(((_heightft * 0.3048)*(_heightft * 0.3048)).toStringAsFixed(3));
-
+await _heightbox.put('Height', height);
     bmi = _weight /heightM;
     var collectbmi = double.parse(bmi.toStringAsFixed(1));
     if (bmi <= 18.4) {
