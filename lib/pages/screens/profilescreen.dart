@@ -33,7 +33,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
         backgroundColor: Colors.grey[350],
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.indigo,
         ),
         body: FutureBuilder<DocumentSnapshot>(
           future: users.doc(widget.username).get(),

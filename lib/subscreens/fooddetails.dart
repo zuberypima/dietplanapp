@@ -14,12 +14,8 @@ class FoodDetails extends StatefulWidget {
 }
 
 class _FoodDetailsState extends State<FoodDetails> {
-  final Stream<QuerySnapshot> _foodStream = FirebaseFirestore.instance
-      .collection('DeitPlanData')
-      .doc('LunchFoods')
-      .collection('Proteinfoods')
-      .snapshots();
 
+CollectionReference users = FirebaseFirestore.instance.collection('users');
   var _statusbox = Hive.box('StatusBox');
   @override
   Widget build(BuildContext context) {
@@ -49,6 +45,8 @@ class _FoodDetailsState extends State<FoodDetails> {
               )),
           body: TabBarView(
             children: [
+
+              //tab 1 wake up
               ListView(children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -88,16 +86,21 @@ class _FoodDetailsState extends State<FoodDetails> {
                                     document.data()! as Map<String, dynamic>;
                                 return Column(
                                   children: [
-                                    ListTile(
-                                      leading: Container(
-                                        height: 70,
-                                        width: 70,
-                                        decoration: BoxDecoration(
-                                            color: Colors.green,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
+                                    InkWell(
+                                      onTap: () {
+                                        updatefood('Wakeup','${data['Name']}');
+                                      },
+                                      child: ListTile(
+                                        leading: Container(
+                                          height: 70,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                        ),
+                                        title: Text('${data['Name']}'),
                                       ),
-                                      title: Text('${data['Name']}'),
                                     ),
                                     Divider(
                                       thickness: 3,
@@ -152,16 +155,21 @@ class _FoodDetailsState extends State<FoodDetails> {
                                     document.data()! as Map<String, dynamic>;
                                 return Column(
                                   children: [
-                                    ListTile(
-                                      leading: Container(
-                                        height: 70,
-                                        width: 70,
-                                        decoration: BoxDecoration(
-                                            color: Colors.green,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
+                                    InkWell(
+                                      onTap: () {
+                                          updatefood('MorningMeal','${data['Name']}');
+                                      },
+                                      child: ListTile(
+                                        leading: Container(
+                                          height: 70,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                        ),
+                                        title: Text('${data['Name']}'),
                                       ),
-                                      title: Text('${data['Name']}'),
                                     ),
                                     Divider(
                                       thickness: 3,
@@ -176,7 +184,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                 ),
               ]),
 
-              //tab 3
+              //tab 3 lunch meal
               ListView(children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -216,16 +224,21 @@ class _FoodDetailsState extends State<FoodDetails> {
                                     document.data()! as Map<String, dynamic>;
                                 return Column(
                                   children: [
-                                    ListTile(
-                                      leading: Container(
-                                        height: 70,
-                                        width: 70,
-                                        decoration: BoxDecoration(
-                                            color: Colors.green,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
+                                    InkWell(
+                                      onTap: () {
+                                          updatefood('LunchMeal','${data['Name']}');
+                                      },
+                                      child: ListTile(
+                                        leading: Container(
+                                          height: 70,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                        ),
+                                        title: Text('${data['Name']}'),
                                       ),
-                                      title: Text('${data['Name']}'),
                                     ),
                                     Divider(
                                       thickness: 3,
@@ -280,16 +293,21 @@ class _FoodDetailsState extends State<FoodDetails> {
                                     document.data()! as Map<String, dynamic>;
                                 return Column(
                                   children: [
-                                    ListTile(
-                                      leading: Container(
-                                        height: 70,
-                                        width: 70,
-                                        decoration: BoxDecoration(
-                                            color: Colors.green,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
+                                    InkWell(
+                                      onTap: () {
+                                        updatefood('LunchMeal','${data['Name']}');
+                                      },
+                                      child: ListTile(
+                                        leading: Container(
+                                          height: 70,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                        ),
+                                        title: Text('${data['Name']}'),
                                       ),
-                                      title: Text('${data['Name']}'),
                                     ),
                                     Divider(
                                       thickness: 3,
@@ -304,7 +322,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                 ),
               ]),
 
-              //Tab5
+              //Tab5 night meal
               ListView(children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -344,16 +362,21 @@ class _FoodDetailsState extends State<FoodDetails> {
                                     document.data()! as Map<String, dynamic>;
                                 return Column(
                                   children: [
-                                    ListTile(
-                                      leading: Container(
-                                        height: 70,
-                                        width: 70,
-                                        decoration: BoxDecoration(
-                                            color: Colors.green,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
+                                    InkWell(
+                                      onTap: () {
+                                        updatefood('Dinner','${data['Name']}');
+                                      },
+                                      child: ListTile(
+                                        leading: Container(
+                                          height: 70,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                        ),
+                                        title: Text('${data['Name']}'),
                                       ),
-                                      title: Text('${data['Name']}'),
                                     ),
                                     Divider(
                                       thickness: 3,
@@ -371,4 +394,28 @@ class _FoodDetailsState extends State<FoodDetails> {
           )),
     );
   }
+
+  Future<void> updatefood(String docid,String food) {
+     var getstatus = _statusbox.get('Status');
+    if(getstatus=='Under'){
+      return FirebaseFirestore.instance.collection('UnderWeightData')
+    .doc(docid)
+    .update({'What': food});
+    }
+
+     if(getstatus=='Normal'){
+      return FirebaseFirestore.instance.collection('NormalWeightData')
+    .doc(docid)
+    .update({'What': food});
+    }
+     if(getstatus=='Over'){
+      return FirebaseFirestore.instance.collection('OverWeightData')
+    .doc(docid)
+    .update({'What': food});
+    }
+   
+   return FirebaseFirestore.instance.collection('UnderWeightData')
+    .doc(docid)
+    .update({'What': food});
+}
 }

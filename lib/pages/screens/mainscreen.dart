@@ -41,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
         appBar: AppBar(
           elevation: 0,
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.orange[200],
+          backgroundColor: Colors.indigo,
         ),
         body: ListView(
           children: [
