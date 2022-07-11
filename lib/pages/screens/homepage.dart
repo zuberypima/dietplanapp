@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:smartdietapp/pages/screens/datascreen.dart';
 import 'package:smartdietapp/pages/screens/mainscreen.dart';
 import 'package:smartdietapp/pages/screens/profilescreen.dart';
-
+import 'package:smartdietapp/servicers/notificationservice.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
 
 class HomeScren extends StatefulWidget {
@@ -16,7 +18,12 @@ class HomeScren extends StatefulWidget {
 class _HomeScrenState extends State<HomeScren> {
 
 int _selectedpage=0;
-
+@override
+  void initState() {
+    // TODO: implement initState
+      tz.initializeTimeZones();
+    NotificationService().showNotification(1, 'Diet riminder', 'Please check your diet', 7);
+  }
 
   @override
   Widget build(BuildContext context) {

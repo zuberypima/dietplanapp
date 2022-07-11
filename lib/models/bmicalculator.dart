@@ -47,8 +47,7 @@ class BIM {
       await _bmibox.put('BMI',collectbmi);
        print(collectbmi);
     }
-    //updateUserBMI(username);
-    //return collectbmi.toString();
+    
   }
 
   Future<void> updateUserBMI(String docId) {

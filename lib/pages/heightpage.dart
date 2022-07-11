@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:smartdietapp/models/adduserdata.dart';
-import 'package:smartdietapp/models/datatofirebase.dart';
 import 'package:smartdietapp/pages/workinghours.dart';
 import 'package:smartdietapp/widgets/nextbutton.dart';
 import 'package:toggle_switch/toggle_switch.dart';

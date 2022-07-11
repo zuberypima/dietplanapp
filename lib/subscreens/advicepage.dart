@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class AdvicesPage extends StatefulWidget {
   const AdvicesPage({Key? key}) : super(key: key);
@@ -9,17 +10,25 @@ class AdvicesPage extends StatefulWidget {
 }
 
 class _AdvicesPageState extends State<AdvicesPage> {
-  final Stream<QuerySnapshot> _sugestedfoodStream =
+  final Stream<QuerySnapshot> _underadvice =
       FirebaseFirestore.instance.collection('UnderAdvice').snapshots();
+        final Stream<QuerySnapshot> _overadvice =
+      FirebaseFirestore.instance.collection('OverAdvice').snapshots();
+        final Stream<QuerySnapshot> _obersityadvice =
+      FirebaseFirestore.instance.collection('ObersityAdvice').snapshots();
+        final Stream<QuerySnapshot> _nomal =
+      FirebaseFirestore.instance.collection('AdviceNormal').snapshots();
+      var _statusbox =Hive.box('StatusBox');
   @override
   Widget build(BuildContext context) {
+     var getstatus =_statusbox.get('Status');
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.indigo,
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: _sugestedfoodStream,
+        stream: getstatus=='Under'?_underadvice:getstatus=='Over'?_overadvice:getstatus=='Obesity'?_obersityadvice:_nomal,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Text('Something went wrong');
