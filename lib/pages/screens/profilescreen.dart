@@ -90,8 +90,8 @@ class _ProfileScreemState extends State<ProfileScreem> {
                             top: 10,
                           ),
                           child: Text(
-                           // 'Body Status',
-                           '${_statusbox.get('Status')}',
+                            'Body Status',
+                          // '${_statusbox.get('Status')}',
                             style: TextStyle(fontSize: 22),
                           ),
                         ),

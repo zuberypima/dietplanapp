@@ -32,7 +32,7 @@ class GoalWeightPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo,
+      backgroundColor:Colors.orange[200],
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

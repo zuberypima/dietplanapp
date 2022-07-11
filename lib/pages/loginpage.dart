@@ -74,8 +74,8 @@ class _LoginPageState extends State<LoginPage> {
           ),
           InkWell(
               onTap: () async {
-               checkuserverificarion('aloyce', '1234');
-           //     checkuserverificarion(_username, _password);
+               //checkuserverificarion('aloyce', '1234');
+               checkuserverificarion(_username, _password);
               },
               child: NextButton('Login')),
           Padding(
