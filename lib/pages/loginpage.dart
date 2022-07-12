@@ -135,6 +135,9 @@ bool isloading =false;
                     )));
       }
       if (snapshots.docs.isEmpty) {
+        setState(() {
+        isloading =false;
+      });
         return showDialog(
             context: context,
             builder: (context) {
@@ -154,6 +157,7 @@ bool isloading =false;
               );
             });
       }
+      
     });
   }
 }

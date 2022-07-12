@@ -15,19 +15,20 @@ class ProfileScreem extends StatefulWidget {
 }
 
 class _ProfileScreemState extends State<ProfileScreem> {
+  bool isloading =false;
   String newweight = '';
   final Stream<QuerySnapshot> userStream =
       FirebaseFirestore.instance.collection('UserDetails').snapshots();
   CollectionReference users =
       FirebaseFirestore.instance.collection('UserDetails');
 
-    var _statusbox =Hive.box('StatusBox');
-        var _bmibox =Hive.box('BMIBox');
+  var _statusbox = Hive.box('StatusBox');
+  var _bmibox = Hive.box('BMIBox');
 
   @override
   Widget build(BuildContext context) {
     //var bmivalue =_statusbox.get('Status');
-       var bmi =_bmibox.get('BMI').toString();
+    var bmi = _bmibox.get('BMI').toString();
 
     return Scaffold(
         backgroundColor: Colors.grey[350],
@@ -52,7 +53,6 @@ class _ProfileScreemState extends State<ProfileScreem> {
                   snapshot.data!.data() as Map<String, dynamic>;
               return ListView(
                 children: [
-                 
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -72,7 +72,6 @@ class _ProfileScreemState extends State<ProfileScreem> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                       
                         ProfileContaine(
                             textincontainer: 'Goal Weight',
                             textindex: '${data['GoalWeight']}')
@@ -88,7 +87,6 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ),
                           child: Text(
                             'Body Status',
-                          // '${_statusbox.get('Status')}',
                             style: TextStyle(fontSize: 22),
                           ),
                         ),
@@ -99,25 +97,30 @@ class _ProfileScreemState extends State<ProfileScreem> {
                             color: Colors.black,
                           ),
                         ),
-                        Row(children: [BodyStatusButton(
-                      text: 'Under',
-                      color:
-                          _statusbox.get('Status') == 'Under' ? Colors.red : Colors.grey),
-                  BodyStatusButton(
-                      text: 'Nomal',
-                      color: _statusbox.get('Status')== 'Normal'
-                          ? Colors.green
-                          : Colors.grey),
-                  BodyStatusButton(
-                      text: 'Over',
-                      color:_statusbox.get('Status')== 'Over'
-                          ? Colors.yellow
-                          : Colors.grey),
-                  BodyStatusButton(
-                      text: 'Obesity',
-                      color:_statusbox.get('Status')== 'Obesity'
-                          ? Colors.red
-                          : Colors.grey),],),
+                        Row(
+                          children: [
+                            BodyStatusButton(
+                                text: 'Under',
+                                color: _statusbox.get('Status') == 'Under'
+                                    ? Colors.red
+                                    : Colors.grey),
+                            BodyStatusButton(
+                                text: 'Nomal',
+                                color: _statusbox.get('Status') == 'Normal'
+                                    ? Colors.green
+                                    : Colors.grey),
+                            BodyStatusButton(
+                                text: 'Over',
+                                color: _statusbox.get('Status') == 'Over'
+                                    ? Colors.yellow
+                                    : Colors.grey),
+                            BodyStatusButton(
+                                text: 'Obesity',
+                                color: _statusbox.get('Status') == 'Obesity'
+                                    ? Colors.red
+                                    : Colors.grey),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -225,7 +228,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
                                       width: 5,
                                     ),
                                     Text(
-                                      'Weigh',
+                                      'Weight',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w500),
@@ -284,7 +287,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
                           ),
                           InkWell(
                               onTap: () {
-                                updateButtonn();
+                                updateButtonn(data['Name']);
                               },
                               child: NextButton('Update')),
                         ],
@@ -302,13 +305,13 @@ class _ProfileScreemState extends State<ProfileScreem> {
         ));
   }
 
-  updateButtonn() {
+  updateButtonn(String docname) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             content: Container(
-              height: 250,
+              height: 150,
               child: Column(
                 children: [
                   Padding(
@@ -333,17 +336,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15))),
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hintText: 'New Goal Weight(kg) ',
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15))),
-                  )
+                  
                 ],
               ),
             ),
@@ -352,7 +345,14 @@ class _ProfileScreemState extends State<ProfileScreem> {
                 padding: const EdgeInsets.only(left: 30, right: 30),
                 child: InkWell(
                     onTap: () {
+                      setState(() {
+                        isloading=true;
+                      });
                       BIMupdate().bmicalculator(newweight);
+                      updateUserBMI(docname, newweight);
+                      setState(() {
+                        isloading=false;
+                      });
                       Navigator.pop(context);
                     },
                     child: NextButton('Submit')),
@@ -361,5 +361,12 @@ class _ProfileScreemState extends State<ProfileScreem> {
           );
         });
   }
-}
 
+    Future<void> updateUserBMI(String docId,String newWeight,) {
+    return users
+        .doc(docId)
+        .update({'Weight':newWeight,})
+        
+        .then((value) => print("User Updated"));
+  }
+}

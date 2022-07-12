@@ -31,8 +31,6 @@ class BIMupdate {
     if (bmi <= 18.4) {
       await _bodystatus.put('Status', 'Under');
       await _bmibox.put('BMI',collectbmi);
-    
-
     } else if (bmi >= 18.5 && bmi <= 24.9) {
 
       await _bodystatus.put('Status', 'Normal');
@@ -53,11 +51,11 @@ class BIMupdate {
     
   }
 
-  Future<void> updateUserBMI(String docId) {
+  Future<void> updateUserBMI(String docId,String newWeight,) {
     return users
         .doc(docId)
-        .update({'BMIvalue': 'test'})
-        .then((value) => print("User Updated"))
-        .catchError((error) => print("Failed to update user: $error"));
+        .update({'BMIvalue': 'test','Weight':newWeight})
+        
+        .then((value) => print("User Updated"));
   }
 }

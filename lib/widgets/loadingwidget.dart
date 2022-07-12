@@ -5,16 +5,14 @@ class LoadingStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 30, right: 30),
-        child: Container(
-          height: 90,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(color: Colors.indigoAccent),
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, right: 30),
+      child: Container(
+        height: 130,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(color: Colors.white),
+        child: Center(
+          child: CircularProgressIndicator(),
         ),
       ),
     );
