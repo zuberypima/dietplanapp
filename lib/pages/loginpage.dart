@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smartdietapp/pages/registrationpage.dart';
 import 'package:smartdietapp/pages/screens/homepage.dart';
+import 'package:smartdietapp/widgets/loadingwidget.dart';
 import 'package:smartdietapp/widgets/nextbutton.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,14 +19,12 @@ class _LoginPageState extends State<LoginPage> {
   String _password = '';
 
   final _auth = FirebaseAuth.instance;
-
+bool isloading =false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.orange[200],
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: ListView(
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 20, bottom: 10),
@@ -74,10 +73,13 @@ class _LoginPageState extends State<LoginPage> {
           ),
           InkWell(
               onTap: () async {
-               //checkuserverificarion('aloyce', '1234');
-               checkuserverificarion(_username, _password);
+              
+              checkuserverificarion(_username, _password);
+             
               },
-              child: NextButton('Login')),
+              
+              child:isloading?LoadingStatus()
+    :NextButton('Login')),
           Padding(
             padding: const EdgeInsets.only(top: 30),
             child: InkWell(
@@ -108,8 +110,13 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+//Loading status
 
+  
   checkuserverificarion(String uid, String password) {
+    setState(() {
+      isloading =true;
+    });
     FirebaseFirestore.instance
         .collection('UserDetails')
         .where('Name', isEqualTo: uid)
@@ -117,6 +124,9 @@ class _LoginPageState extends State<LoginPage> {
         .get()
         .then((QuerySnapshot snapshots) {
       if (snapshots.docs.isNotEmpty) {
+        setState(() {
+          isloading =false;
+        });
         Navigator.push(
             context,
             MaterialPageRoute(

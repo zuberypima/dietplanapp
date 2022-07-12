@@ -72,10 +72,7 @@ class _ProfileScreemState extends State<ProfileScreem> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        ProfileContaine(
-                          textincontainer: 'Suggested Weight',
-                          textindex: '55',
-                        ),
+                       
                         ProfileContaine(
                             textincontainer: 'Goal Weight',
                             textindex: '${data['GoalWeight']}')

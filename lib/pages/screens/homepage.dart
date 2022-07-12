@@ -34,6 +34,7 @@ final _pagesselected =[
    ProfileScreem(username: widget.username,)
 ];
     return SafeArea(child: Scaffold(
+      backgroundColor: Colors.grey,
               body: 
         _pagesselected[_selectedpage],
     bottomNavigationBar: BottomNavigationBar(
@@ -46,7 +47,7 @@ final _pagesselected =[
       items: [
       
       BottomNavigationBarItem(icon: Icon(Icons.home,),label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.account_tree_sharp,),label: 'Data'),
+            BottomNavigationBarItem(icon: Icon(Icons.account_tree_sharp,),label: 'Tips'),
       BottomNavigationBarItem(icon: Icon(Icons.person,),label: 'Profile'),
 
     ]),
